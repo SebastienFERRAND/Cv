@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFE4C4"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/profile_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/essai_profil_h_small" />
+
+        <Button
+            android:id="@+id/pro_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/icon_portrait_small" />
+
+        <Button
+            android:id="@+id/education_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/education_icon_small" />
+
+        <Button
+            android:id="@+id/skills_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/skill_icon_small" />
+
+        <Button
+            android:id="@+id/langue_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/map_icon_small" />
+
+        <Button
+            android:id="@+id/loisir_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/dice_small" />
+
+        <Button
+            android:id="@+id/contact_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/contact_icon_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/bubble_1"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start" />
+
+        <ImageView
+            android:id="@+id/bubble_2"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/bubble_3"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/bubble_4"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/bubble_5"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/bubble_6"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/bubble_7"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bubble_start"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bubble"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/AudioFileInfoOverlayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:text="@string/title_profile"
+            android:textColor="#ffa500"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/map_better"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/lv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>
