@@ -2,13 +2,7 @@ package com.example.adapter;
 
 import java.util.ArrayList;
 
-import com.example.adapter.ProAdapter.ViewHolder;
-import com.example.business.Line;
-import com.example.cvsebastienferrand.R;
-
 import android.content.Context;
-import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.business.Line;
+import com.example.cvsebastienferrand.R;
+
 public class ProfileAdapter extends BaseAdapter{
 	
 
 	private LayoutInflater mInflater;
 	private ArrayList<Line> listString;
-	private Typeface vavontFont;
 	
 	static class ViewHolder {
 		public ImageView pic;
@@ -31,7 +27,6 @@ public class ProfileAdapter extends BaseAdapter{
 	public ProfileAdapter(Context c, ArrayList<Line> list) {
 		listString = list;
 		mInflater = LayoutInflater.from(c);
-		vavontFont = Typeface.createFromAsset(c.getAssets(), "fonts/vavont-bolder.ttf");
 	}
 	
 	

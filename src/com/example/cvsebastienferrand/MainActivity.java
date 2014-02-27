@@ -2,27 +2,8 @@ package com.example.cvsebastienferrand;
 
 import java.util.ArrayList;
 
-import com.example.adapter.ContactAdapter;
-import com.example.adapter.HobbiesAdapter;
-import com.example.adapter.LangueAdapter;
-import com.example.adapter.ProAdapter;
-import com.example.adapter.ProfileAdapter;
-import com.example.adapter.SkillAdapter;
-import com.example.business.Contact;
-import com.example.business.ContentPro;
-import com.example.business.Hobbies;
-import com.example.business.Language;
-import com.example.business.Line;
-import com.example.business.Skills;
-import com.example.cvsebastienferrand.R;
-
-
-
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +11,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.adapter.ContactAdapter;
+import com.example.adapter.HobbiesAdapter;
+import com.example.adapter.LangueAdapter;
+import com.example.adapter.ProAdapter;
+import com.example.adapter.ProjectAdapter;
+import com.example.adapter.SkillAdapter;
+import com.example.business.Contact;
+import com.example.business.ContentPro;
+import com.example.business.Hobbies;
+import com.example.business.Language;
+import com.example.business.Projects;
+import com.example.business.Skills;
 
 public class MainActivity extends Activity {
 
@@ -39,7 +33,7 @@ public class MainActivity extends Activity {
 	private ArrayList<Skills> listSkills;
 	private ArrayList<Language> listLangue;
 	private ArrayList<Hobbies> listHobbies;
-	private ArrayList<Contact> listContact;
+	private ArrayList<Projects> listProject;
 	private ListView lv;
 
 	private Button iconProfile;
@@ -48,17 +42,16 @@ public class MainActivity extends Activity {
 	private Button iconSkills;
 	private Button iconMap;
 	private Button iconHobbies;
-	private Button iconContact;
+	private Button iconProject;
 
 	private Button current_b_selection;
 	private int id_res_back;
-
-
 
 	private ImageView startBul;
 	private ImageView map;
 
 	private TextView title;
+	private TextView selfDescription;
 
 	private MainActivity ma;
 
@@ -77,6 +70,8 @@ public class MainActivity extends Activity {
 
 		lv = (ListView) this.findViewById(R.id.lv_content);
 
+		selfDescription = (TextView) findViewById(R.id.self_description);
+		selfDescription.setText(ma.getResources().getString(R.string.description_of_myself));
 		startBul = (ImageView) this.findViewById(R.id.bubble_1);
 		map = (ImageView) this.findViewById(R.id.map);
 
@@ -86,7 +81,7 @@ public class MainActivity extends Activity {
 		listSkills = new ArrayList<Skills>();
 		listLangue = new ArrayList<Language>();
 		listHobbies = new ArrayList<Hobbies>();
-		listContact = new ArrayList<Contact>();
+		listProject = new ArrayList<Projects>();
 
 		final int[] listIconProfil = {
 				R.drawable.man_icon,
@@ -94,19 +89,24 @@ public class MainActivity extends Activity {
 				R.drawable.icon_house,
 				R.drawable.french_flag_icon,
 				R.drawable.icon_car,
-				R.drawable.heart_icon
+				R.drawable.heart_icon,
+				R.drawable.contact_icon_new,
+				R.drawable.icon_mail_new,
+				R.drawable.skype_icon
 
 		};
 
 		final String[] listTextProfil = {
 				"Homme",
 				"27 juillet 1989, 24 ans",
-				"406 rue de la pépinière 34000 Montpellier",
+				"406 rue de la pépinière 34000 Montpellier, France",
 				"Français",
 				"Détenteur du permis B",
 				"Célibataire",
+				"06 51 57 91 22",
+				"Sebastien.ferrand.dev@gmail.com",
+				"Ferrand.sebastien.dev"
 		};
-
 
 		for (int i = 0; i < listTextProfil.length; i++){
 			Contact line = new Contact();
@@ -118,21 +118,21 @@ public class MainActivity extends Activity {
 
 
 		final String[] listDatePro = {
-				"2008\n3 mois",
-				"2009\n3 mois",
-				"2009/10\n1 an ",
-				"2011\n3 mois",
-				"2012/13\n1 an",
 				"2013/14\n1 an",
+				"2012/13\n1 an",
+				"2011\n3 mois",
+				"2009/10\n1 an ",
+				"2009\n3 mois",
+				"2008\n3 mois"
 		};
 
 		final String[] listTextPro = {
-				"Création et intégration de modules php pour Emploi-Lr à Montpellier",
-				"Création d'un outil de baladodiffusion en java pour l'IUFM à Montpellier",
-				"Formation en alternance, intégration de modules en java pour Pikko à Montpellier",
-				"Création et intégration de modules php pour Lauréats informatique à Montpellier",
-				"Développement d'applications android pour Adylitica à Pékin",
-				"Création et développement d'application android en auto-entrepreneur à Pékin",
+				ma.getResources().getString(R.string.exp_paradroid),
+				ma.getResources().getString(R.string.exp_adylitica),
+				ma.getResources().getString(R.string.exp_scolaris),
+				ma.getResources().getString(R.string.exp_pikko),
+				ma.getResources().getString(R.string.exp_iufm),
+				ma.getResources().getString(R.string.exp_emploi_lr)
 		};
 
 
@@ -144,17 +144,17 @@ public class MainActivity extends Activity {
 		}
 
 		final String[] listDateSch = {
-				"2007",
-				"2009",
+				"2012",
 				"2010",
-				"2012"
+				"2009",
+				"2007"
 		};
 
 		final String[] listTextSch = {
-				"Obtention du baccalauréat option sciences au lycée Joffre à Montpellier",
-				"Obtention du BTS informatique de gestion à l'EPSI de Montpellier",
-				"Obtention d'un bachelor en informatique à l'EPSI de Montpellier",
-				"Obtention du diplôme d'ingénierie des sciences informatique option génie logiciel à l'EPSI de Montpellier"
+				ma.getResources().getString(R.string.diplome_inge),
+				ma.getResources().getString(R.string.diplome_bachelor),
+				ma.getResources().getString(R.string.diplome_bts),
+				ma.getResources().getString(R.string.diplome_bac)
 		};
 
 
@@ -167,39 +167,28 @@ public class MainActivity extends Activity {
 
 		final String[] listTextSkill = {
 				"Language : ",
-				"Java",
-				"Android",
+				"Java - Android",
+				"SQL",
 				"PHP",
-				"Design : ",
+				"C++",
+				"Action script 3",
+				"Utilitaires : ",
+				"Rational rose",
 				"Photoshop",
-				"Gimp",
-				"Réalisations : "
+				"Gimp"
 		};
 
 		final int[] listRateSkill = {
 				0,
-				4,
 				5,
-				1,
+				4,
+				3,
+				3,
+				3,
 				0,
+				3,
 				2,
-				2,
-				0
-		};
-		
-		final int[] listLogo = {
-				R.drawable.everydaynotes_icon,
-				R.drawable.paradroid_alarm
-		};
-		
-		final String[] listTitleProject = {
-				"Everyday Notes",
-				"Paradroid Alarm"
-		};
-		
-		final int[] listQr = {
-				R.drawable.qrcode_everydaynotes,
-				R.drawable.paradroid_alarm_qrcode
+				2
 		};
 
 		for (int i = 0; i < listTextSkill.length; i++){
@@ -207,6 +196,39 @@ public class MainActivity extends Activity {
 			sk.setTitleSkill(listTextSkill[i]);
 			sk.setRating(listRateSkill[i]);
 			listSkills.add(sk);
+		}
+
+
+
+		final int[] listLogo = {
+				R.drawable.everydaynotes_icon,
+				R.drawable.paradroid_alarm
+		};
+
+		final String[] listTitleProject = {
+				"Everyday Notes\nAndroid",
+				"Paradroid Alarm\nAndroid"
+		};
+
+		final String[] listDescriptionProject = {
+				ma.getResources().getString(R.string.everyday_notes),
+				ma.getResources().getString(R.string.paradroid_alarm)
+		};
+
+		final int[] listQr = {
+				R.drawable.qrcode_everydaynotes,
+				R.drawable.paradroid_alarm_qrcode
+		};
+
+
+
+		for (int i = 0; i < listLogo.length; i++){
+			Projects pr = new Projects();
+			pr.setLogo(listLogo[i]);
+			pr.setTitle(listTitleProject[i]);
+			pr.setDescription(listDescriptionProject[i]);
+			pr.setQrcode(listQr[i]);
+			listProject.add(pr);
 		}
 
 
@@ -251,9 +273,9 @@ public class MainActivity extends Activity {
 						"Tennis de table\nNatation\nKayak (Montpellier-Avignon "
 								+ "réalisé dans le cadre de la lutte contre le cancer)",
 								"Guitare\nChant",
-								"Blog sur mon voyage en Chine :\nhttp://sebinchina.wordpress.com/ \n"
-										+ "Blog sur les monnaies numériques :\nhttp://leblogbitcoin.com/",
-										"Steeve Jobs : la vie d'un génie",
+								ma.getResources().getString(R.string.hobbie_desc_china) 
+								+ "<br />" + ma.getResources().getString(R.string.hobbie_desc_bitcoin),
+								"Steve Jobs : la vie d'un génie",
 		};
 
 		final String[] listHobbiesTitle = {
@@ -272,25 +294,6 @@ public class MainActivity extends Activity {
 			listHobbies.add(hob);
 		}
 
-		final int[] listContactIcon = {
-				R.drawable.contact_icon_new,
-				R.drawable.icon_mail_new,
-				R.drawable.skype_icon
-		};
-
-		final String[] listTextContact = {
-				"06 51 57 91 22",
-				"Sebastien.ferrand.dev@gmail.com",
-				"Ferrand.sebastien.dev"
-		};
-
-		for (int i = 0; i < listTextContact.length; i++){
-			Contact ct = new Contact();
-			ct.setResId(listContactIcon[i]);
-			ct.setTitle(listTextContact[i]);
-			listContact.add(ct);
-		}
-
 		ContactAdapter pa = new ContactAdapter(this, listProfil);
 		lv.setAdapter(pa);
 
@@ -302,7 +305,7 @@ public class MainActivity extends Activity {
 		iconSkills = (Button) this.findViewById(R.id.skills_button);
 		iconMap = (Button) this.findViewById(R.id.langue_button);
 		iconHobbies = (Button) this.findViewById(R.id.loisir_button);
-		iconContact = (Button) this.findViewById(R.id.contact_button);
+		iconProject = (Button) this.findViewById(R.id.project_button);
 
 		current_b_selection = iconProfile;
 		id_res_back = R.drawable.essai_profil_small;
@@ -318,6 +321,7 @@ public class MainActivity extends Activity {
 				setIconBackground(R.drawable.essai_profil_small, R.drawable.essai_profil_h_small, iconProfile);
 
 				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.VISIBLE);
 				setVisibility((ImageView) ma.findViewById(R.id.bubble_1));
 			}
 		});
@@ -334,6 +338,7 @@ public class MainActivity extends Activity {
 				setIconBackground(R.drawable.icon_portrait_small, R.drawable.icon_portrait_h_small, iconPro);
 
 				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.GONE);
 				setVisibility((ImageView) ma.findViewById(R.id.bubble_2));
 			}
 		});
@@ -349,6 +354,7 @@ public class MainActivity extends Activity {
 				setIconBackground(R.drawable.education_icon_small, R.drawable.education_icon_h_small, iconScholar);
 
 				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.GONE);
 				setVisibility((ImageView) ma.findViewById(R.id.bubble_3));
 			}
 		});
@@ -366,6 +372,24 @@ public class MainActivity extends Activity {
 				setVisibility((ImageView) ma.findViewById(R.id.bubble_4));
 
 				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.GONE);
+			}
+		});
+
+
+		iconProject.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				ProjectAdapter pa = new ProjectAdapter(ma, listProject);
+				lv.setAdapter(pa);
+				title.setText(ma.getResources().getString(R.string.title_project));
+
+				setIconBackground(R.drawable.project_icon_small, R.drawable.project_icon_h_small, iconProject);
+
+				setVisibility((ImageView) ma.findViewById(R.id.bubble_5));
+				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.GONE);
 			}
 		});
 
@@ -379,8 +403,9 @@ public class MainActivity extends Activity {
 
 				setIconBackground(R.drawable.map_icon_small, R.drawable.map_icon_h_small, iconMap);
 
-				setVisibility((ImageView) ma.findViewById(R.id.bubble_5));
+				setVisibility((ImageView) ma.findViewById(R.id.bubble_6));
 				map.setVisibility(View.VISIBLE);
+				selfDescription.setVisibility(View.GONE);
 
 			}
 		});
@@ -395,26 +420,13 @@ public class MainActivity extends Activity {
 				setIconBackground(R.drawable.dice_small, R.drawable.dice_h_small, iconHobbies);
 
 				title.setText(ma.getResources().getString(R.string.title_hobbies));
-				setVisibility((ImageView) ma.findViewById(R.id.bubble_6));
-
-				map.setVisibility(View.GONE);
-			}
-		});
-
-		iconContact.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				ContactAdapter pa = new ContactAdapter(ma, listContact);
-				lv.setAdapter(pa);
-				title.setText(ma.getResources().getString(R.string.title_contact));
-
-				setIconBackground(R.drawable.contact_icon_small, R.drawable.contact_icon_h_small, iconContact);
-
 				setVisibility((ImageView) ma.findViewById(R.id.bubble_7));
+
 				map.setVisibility(View.GONE);
+				selfDescription.setVisibility(View.GONE);
 			}
 		});
+
 
 		return true;
 	}

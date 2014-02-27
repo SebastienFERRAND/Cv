@@ -3,17 +3,13 @@ package com.example.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TextView;
 
-import com.example.adapter.ProAdapter.ViewHolder;
-import com.example.business.ContentPro;
 import com.example.business.Language;
 import com.example.cvsebastienferrand.R;
 
@@ -22,8 +18,6 @@ public class LangueAdapter extends BaseAdapter{
 
 	private LayoutInflater mInflater;
 	private ArrayList<Language> listString;
-	private Typeface vavontFont;
-	private Context context;
 
 	static class ViewHolder {
 		public ImageView flag;
@@ -31,10 +25,8 @@ public class LangueAdapter extends BaseAdapter{
 	}
 
 	public LangueAdapter(Context c, ArrayList<Language> list) {
-		context = c;
 		listString = list;
 		mInflater = LayoutInflater.from(c);
-		vavontFont = Typeface.createFromAsset(c.getAssets(), "fonts/vavont-bolder.ttf");
 	}
 
 

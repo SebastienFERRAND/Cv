@@ -3,7 +3,8 @@ package com.example.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.adapter.ProfileAdapter.ViewHolder;
 import com.example.business.ContentPro;
-import com.example.business.Line;
 import com.example.cvsebastienferrand.R;
 
 public class ProAdapter extends BaseAdapter{
@@ -21,8 +20,6 @@ public class ProAdapter extends BaseAdapter{
 
 	private LayoutInflater mInflater;
 	private ArrayList<ContentPro> listString;
-	private Typeface vavontFont;
-	private Context context;
 
 	static class ViewHolder {
 		public TextView date;
@@ -31,10 +28,8 @@ public class ProAdapter extends BaseAdapter{
 	}
 
 	public ProAdapter(Context c, ArrayList<ContentPro> list) {
-		context = c;
 		listString = list;
 		mInflater = LayoutInflater.from(c);
-		vavontFont = Typeface.createFromAsset(c.getAssets(), "fonts/vavont-bolder.ttf");
 	}
 
 
@@ -76,7 +71,8 @@ public class ProAdapter extends BaseAdapter{
 
 
 //		holder.description.setTypeface(vavontFont);
-		holder.description.setText(listString.get(pos).getContent());
+		holder.description.setMovementMethod(LinkMovementMethod.getInstance());
+		holder.description.setText(Html.fromHtml(listString.get(pos).getContent()));
 
 //		holder.date.setTypeface(vavontFont);
 		holder.date.setText(listString.get(pos).getDate());

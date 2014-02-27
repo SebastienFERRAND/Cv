@@ -8,10 +8,27 @@
     <string name="title_pro">Expérience professionnelle</string>
     <string name="title_sch">Parcours universitaire</string>
     <string name="title_skill">Compétences</string>
+    <string name="title_project">Projets</string>
     <string name="title_map">Voyages et langues</string>
     <string name="title_hobbies">Loisirs</string>
     <string name="title_contact">Contact</string>
-    
-    
+    <string name="hobbie_desc_china">&lt;a href="http://sebinchina.wordpress.com/">Blog sur mon voyage en Chine&lt;/a></string>
+    <string name="hobbie_desc_bitcoin">&lt;a href="http://leblogbitcoin.com/">Blog sur les monnaies numériques&lt;/a></string>
+    <string name="everyday_notes">&lt;a href="http://www.1mobile.com/everyday-notes-506468.html">Expérimentez l\'agenda hyper-réaliste&lt;/a></string>
+    <string name="paradroid_alarm">&lt;a href="https://play.google.com/store/apps/details?id=com.paradroid.paradroidalarm">Dialoguez avec votre alarme&lt;/a></string>
+    <string name="description_of_myself">Ingénieur android en recherche de poste ou d\'un projet freelance.\n
+Vous aurez en collaborant avec moi qualité, professionnalisme et perfection.\n
+J\'aime relever des défis, et créer de nouveaux composants qui contribuent au futur d\'android.\n
+J\'aime créer et faire des applications sophistiquées mais simples améliorant la vie des utilisateurs.</string>
+    <string name="diplome_inge">Diplôme d\'ingénierie des sciences informatique option génie logiciel à l\'&lt;a href="http://www.epsi.fr/Campus/Campus-de-Montpellier">EPSI&lt;/a> de Montpellier</string>
+    <string name="diplome_bachelor">Bachelor en informatique à l\'&lt;a href="http://www.epsi.fr/Campus/Campus-de-Montpellier">EPSI&lt;/a> de Montpellier</string>
+    <string name="diplome_bts">BTS informatique de gestion à l\'&lt;a href="http://www.epsi.fr/Campus/Campus-de-Montpellier">EPSI&lt;/a> de Montpellier</string>
+    <string name="diplome_bac">Baccalauréat option sciences au &lt;a href="http://www.lyceejoffre.net/joomla/">lycée Joffre&lt;/a> de Montpellier</string>
+    <string name="exp_paradroid">Développement d\'applications android en auto-entrepreneur à Pékin</string>
+    <string name="exp_adylitica">Développement d\'applications android pour &lt;a href="http://adylitica.com/">Adylitica&lt;/a> à Pékin</string>
+    <string name="exp_scolaris">Développement de modules php pour &lt;a href="http://www.scolaris.info/">Scolaris&lt;/a> à Montpellier</string>
+    <string name="exp_pikko">Formation en alternance, développement de modules en java pour &lt;a href="http://www.pikko-software.com/">Pikko-software&lt;/a> à Montpellier</string>
+    <string name="exp_iufm">Développement d\'un outil de baladodiffusion en java pour l\'&lt;a href="http://www.montpellier.iufm.fr/internet/site/">IUFM&lt;/a> à Montpellier</string>
+    <string name="exp_emploi_lr">Développement de modules php pour &lt;a href="http://www.emploilr.com/">Emploi-lr&lt;/a> à Montpellier</string>
 
 </resources>

@@ -3,20 +3,13 @@ package com.example.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.adapter.ProfileAdapter.ViewHolder;
-import com.example.business.ContentPro;
-import com.example.business.Line;
 import com.example.business.Skills;
 import com.example.cvsebastienferrand.R;
 
@@ -25,16 +18,15 @@ public class SkillAdapter extends BaseAdapter{
 	private LayoutInflater mInflater;
 	private ArrayList<Skills> listString;
 
-	private static final int skills = 0;
-	private static final int project = 1;
-	private static final int TYPE_MAX_COUNT = project + 1;
+
+	private static final int SKILL_TITLE = 0;
+	private static final int SKILL_ROW = 1;
+	private static final int TYPE_MAX_COUNT = SKILL_ROW + 1;
 
 	static class ViewHolder {
 		public TextView title;
 		public RatingBar bar;
-		public ImageView logo_project;
-		public TextView title_project;
-		public ImageView qrcode_project;
+		public TextView title_skill;
 	}
 
 	public SkillAdapter(Context c, ArrayList<Skills> list) {
@@ -54,14 +46,8 @@ public class SkillAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public int getItemViewType(int position) {
-		int type;
-		if ((position) < 8){
-			type = skills;
-		}else{
-			type = project;
-		}
-		return type;
+	public long getItemId(int pos) {
+		return pos;
 	}
 
 	@Override
@@ -70,72 +56,71 @@ public class SkillAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public long getItemId(int pos) {
-		return pos;
+	public int getItemViewType(int position) {
+		int type;
+		if (listString.get(position).getRating() == 0){
+			type = SKILL_TITLE;
+		}else{
+			type = SKILL_ROW;
+		}
+		return type;
 	}
 
 	@Override
 	public View getView(int pos, View convertView, ViewGroup par) {
 
 
-		ViewHolder holder;
+		ViewHolder holder= new ViewHolder();;
 		int type = getItemViewType(pos);
 
 		if (convertView == null) {
 
-			holder = new ViewHolder();
 
-			switch (type){
+			switch (type) {
 
-			case skills:
+			case SKILL_ROW:
 
 				convertView = mInflater.inflate(R.layout.row_skills, par, false);
 
 				holder.title = (TextView) convertView.findViewById(R.id.skill_title);
 				holder.bar = (RatingBar) convertView.findViewById(R.id.ratingBar);
 
-				if (listString.get(pos).getRating() == 0){
-					holder.bar.setVisibility(View.GONE);
-				}else{
-					holder.bar.setVisibility(View.VISIBLE);
-				}
-
-				convertView.setTag(holder);
-
 				break;
 
-			case project:
 
-				convertView = mInflater.inflate(R.layout.row_realisation, par, false);
+			case SKILL_TITLE:
+				convertView = mInflater.inflate(R.layout.row_big_title, par, false);
 
-				holder.logo_project = (ImageView) convertView.findViewById(R.id.logo_project);
-				holder.title_project = (TextView) convertView.findViewById(R.id.title_project);
-				holder.qrcode_project = (ImageView) convertView.findViewById(R.id.qrcode_project);
+				holder.title_skill = (TextView) convertView.findViewById(R.id.title_skill);
 
 				break;
 
 			}
+
+			convertView.setTag(holder);
 
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 
 
-		//			holder.title.setTypeface(vavontFont);
-		holder.title.setText(listString.get(pos).getTitleSkill());
+		switch (type) {
 
-		if ((listString.get(pos).getTitleSkill().equals("RŽalisations : "))
-				|| (listString.get(pos).getTitleSkill().equals("Language : "))
-				|| (listString.get(pos).getTitleSkill().equals("Design : "))){
+		case SKILL_ROW:
+			
+			holder.title.setText(listString.get(pos).getTitleSkill());
+			holder.bar.setRating(listString.get(pos).getRating());
+			
+			break;
 
-			((LinearLayout) holder.title.getParent()).setBackgroundColor(0xFFffa500);
-			holder.title.setTextSize(22);
-			holder.title.setTypeface(null, Typeface.BOLD);
+		case SKILL_TITLE:
+
+			holder.title_skill.setText(listString.get(pos).getTitleSkill());
+
+			break;
+
 		}
-
-
-		holder.bar.setRating(listString.get(pos).getRating());
-
+		
 		return convertView;
 	}
 

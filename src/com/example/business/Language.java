@@ -1,6 +1,5 @@
 package com.example.business;
 
-import android.widget.RatingBar;
 
 public class Language {
 
